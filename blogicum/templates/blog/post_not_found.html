@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<center>
+<p>
+  <img src="{% static 'img/not_found.jpg' %}" width='270' height='300'>
+</p>
+<p>
+  <h3>Упс, запрошенная страница не найдена</h3>
+</p>
+<p>
+  <a href={% url 'blog:index' %}>Вернуться на главную</a>
+</p>
+</center>
+{% endblock %}
