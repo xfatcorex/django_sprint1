@@ -43,6 +43,7 @@ posts = [
     },
 ]
 
+posts_dict = {post['id']: post for post in posts}
 
 def index(request):
     template = 'blog/index.html'
@@ -51,10 +52,10 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    posts_dict = {post['id']: post for post in posts}
-    if post_id not in posts_dict.keys():
+    post_value = posts_dict.get(post_id)
+    if post_value is None:
         return render(request, 'blog/post_not_found.html')
-    context = {'post': posts_dict[post_id]}
+    context = {'post': post_value}
     return render(request, 'blog/detail.html', context)
 
 
